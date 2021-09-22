@@ -12,7 +12,7 @@ const GridSample = () => {
         resizable: true,
         movable: true,
         sortable: true,
-        domLayout: 'autoHeight',
+        // domLayout: 'autoHeight',
         // suppressRowTransform: true,
     };
 
@@ -41,8 +41,9 @@ const GridSample = () => {
         {
             headerName: 'No',
             field: 'no',
-            width: 60,
-            minWidth: 60,
+            width: 80,
+            minWidth: 80,
+            pinned: 'left',
             // lockPosition: true,
             onCellClicked: (grid) => {
                 console.log(grid);
@@ -50,18 +51,13 @@ const GridSample = () => {
             cellRendererFramework: (grid) => {
 
                 const data = grid.data;
-                const isFirst = grid.node.hasChildren();
                 let value = '';
-                console.log(grid);
-                console.log(grid.node.expanded);
-                console.log(grid.node.hasChildren());
                 if (grid.node.allChildrenCount && grid.node.allChildrenCount > 0) {
                     value = Object(data).hasOwnProperty('no') ? data.no : '';
                 } else {
                     value = '';
                 }
 
-                // return '';
                 return value;
             },
         },
@@ -111,12 +107,7 @@ const GridSample = () => {
                     }}
                     gridOptions={gridOptions}
                     defaultColDef={{ flex: 1 }}
-                    // autoGroupColumnDef={{
-                    //     headerName: 'make',
-                    //     minWidth: 300,
-                    //     cellRendererParams: { suppressCount: true },
-                    // }}
-                    autoGroupColumnDef={{ field: "make" }}
+                    autoGroupColumnDef={{ headerName: '메이커', field: "make" }}
                     treeData={true}
                     animateRows={true}
                     groupDefaultExpanded={0}
@@ -127,148 +118,6 @@ const GridSample = () => {
                 >
                 </AgGridReact>
             </div>
-            {/* <div style={{ width: '100%', height: '100%' }}>
-                <div className="example-wrapper">
-                    <div
-                        id="myGrid"
-                        style={{
-                            height: '1200px',
-                            width: '100%',
-                        }}
-                        className="ag-theme-alpine"
-                    >
-                        <AgGridReact
-                            rowData={[
-                                {
-                                    orgHierarchy: ['Erica Rogers'],
-                                    jobTitle: 'CEO',
-                                    employmentType: 'Permanent',
-                                },
-                                {
-                                    orgHierarchy: ['Erica Rogers', 'Malcolm Barrett'],
-                                    jobTitle: 'Exec. Vice President',
-                                    employmentType: 'Permanent',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Esther Baker',
-                                    ],
-                                    jobTitle: 'Director of Operations',
-                                    employmentType: 'Permanent',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Esther Baker',
-                                        'Brittany Hanson',
-                                    ],
-                                    jobTitle: 'Fleet Coordinator',
-                                    employmentType: 'Permanent',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Esther Baker',
-                                        'Brittany Hanson',
-                                        'Leah Flowers',
-                                    ],
-                                    jobTitle: 'Parts Technician',
-                                    employmentType: 'Contract',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Esther Baker',
-                                        'Brittany Hanson',
-                                        'Tammy Sutton',
-                                    ],
-                                    jobTitle: 'Service Technician',
-                                    employmentType: 'Contract',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Esther Baker',
-                                        'Derek Paul',
-                                    ],
-                                    jobTitle: 'Inventory Control',
-                                    employmentType: 'Permanent',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Francis Strickland',
-                                    ],
-                                    jobTitle: 'VP Sales',
-                                    employmentType: 'Permanent',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Francis Strickland',
-                                        'Morris Hanson',
-                                    ],
-                                    jobTitle: 'Sales Manager',
-                                    employmentType: 'Permanent',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Francis Strickland',
-                                        'Todd Tyler',
-                                    ],
-                                    jobTitle: 'Sales Executive',
-                                    employmentType: 'Contract',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Francis Strickland',
-                                        'Bennie Wise',
-                                    ],
-                                    jobTitle: 'Sales Executive',
-                                    employmentType: 'Contract',
-                                },
-                                {
-                                    orgHierarchy: [
-                                        'Erica Rogers',
-                                        'Malcolm Barrett',
-                                        'Francis Strickland',
-                                        'Joel Cooper',
-                                    ],
-                                    jobTitle: 'Sales Executive',
-                                    employmentType: 'Permanent',
-                                },
-                            ]}
-                            defaultColDef={{ flex: 1 }}
-                            autoGroupColumnDef={{
-                                headerName: 'Organisation Hierarchy',
-                                minWidth: 300,
-                                cellRendererParams: { suppressCount: true },
-                            }}
-                            treeData={true}
-                            animateRows={true}
-                            groupDefaultExpanded={-1}
-                            getDataPath={function (data) {
-                                return data.orgHierarchy;
-                            }}
-                        >
-                            <AgGridColumn field="jobTitle" />
-                            <AgGridColumn field="employmentType" />
-                        </AgGridReact>
-                    </div>
-                </div>
-            </div> */}
         </>
     );
 };
